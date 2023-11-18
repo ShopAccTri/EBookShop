@@ -34,7 +34,7 @@ class LoginController extends Controller
         if(Auth::user()->role_id == "1"){
             return redirect('admin/dashboard')->with("message","Chào mừng đến trang quản trị");
         }else{
-            return redirect('/home')->with("status","Đăng nhập thành công!");
+            return redirect('/')->with("status","Đăng nhập thành công!");
         }
     }
 
