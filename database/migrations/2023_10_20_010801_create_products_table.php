@@ -25,6 +25,7 @@ return new class extends Migration
             $table->integer("selling_price");
             $table->integer("quantity");
             $table->tinyInteger("trending")->default("1"); //1 là trending 2 là không trending
+            $table->tinyInteger("featured")->default("1"); //1 là trending 2 là không trending
             $table->tinyInteger("status")->default("1"); //1 là hiện 2 là ẩn
 
             $table->string("meta_title")->nullable();

@@ -21,6 +21,8 @@ Route::get('/collections', [App\Http\Controllers\Frontend\FrontendController::cl
 Route::get('/collections/{category_slug}', [App\Http\Controllers\Frontend\FrontendController::class, 'products']);
 Route::get('/collections/{category_slug}/{product_slug}', [App\Http\Controllers\Frontend\FrontendController::class, 'productView']);
 Route::get('/new-arrivals', [App\Http\Controllers\Frontend\FrontendController::class, 'newArrival']);
+Route::get('/featured-products', [App\Http\Controllers\Frontend\FrontendController::class, 'featuredProduct']);
+
 
 
 
