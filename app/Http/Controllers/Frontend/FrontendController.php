@@ -4,15 +4,18 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Product;
 use App\Models\Slider;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Builder;
 
 class FrontendController extends Controller
 {
     public function index()
     {
         $sliders = Slider::where("status", "1")->get();
-        return view("frontend.home", compact("sliders"));
+        $trendingProducts = Product::where("trending","1")->latest()->take(15)->get();
+        return view("frontend.home", compact("sliders","trendingProducts"));
     }
 
     public function categories()
