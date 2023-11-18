@@ -58,8 +58,8 @@
             <div class="row">
 
                 <div class="col-md-12">
-                    <h4>Sản phẩm mới</h4>
-                    <div class="underline"></div>
+                    <h4>Sản phẩm HOT</h4>
+                    <div class="underline mb-4"></div>
                 </div>
 
                 @if ($trendingProducts)
@@ -70,7 +70,7 @@
                                     <div class="product-card">
                                         <div class="product-card-img">
     
-                                            <label class="stock bg-danger">Mới</label>
+                                            <label class="stock bg-danger">HOT</label>
     
     
                                             @if ($productItem->productImages->count() > 0)
