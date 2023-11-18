@@ -50,7 +50,7 @@
                 @empty
                     <div class="col-md-12">
                         <div class="p-2">
-                            <h4>Không có sản phẩm nào</h4>
+                            <h4>Không có sản phẩm nổi bật nào</h4>
                         </div>
                     </div>    
                 @endforelse

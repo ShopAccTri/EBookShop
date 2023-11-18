@@ -87,10 +87,10 @@
                         <a class="nav-link" href="{{ url("/collections") }}">Danh mục</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Sản phẩm mới</a>
+                        <a class="nav-link" href="{{ url("/new-arrivals") }}">Sản phẩm mới</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Featured Products</a>
+                        <a class="nav-link" href="{{ url("/featured-products") }}">Sản phẩm nổi bật</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Electronics</a>
