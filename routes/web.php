@@ -36,6 +36,9 @@ Route::middleware(["auth"])->group(function(){
     Route::get('checkout', [App\Http\Controllers\Frontend\CheckoutController::class, 'index']);
     Route::get('orders', [App\Http\Controllers\Frontend\OrderController::class, 'index']);
     Route::get('orders/{orderId}', [App\Http\Controllers\Frontend\OrderController::class, 'show']);
+
+    Route::get('profile', [App\Http\Controllers\Frontend\UserController::class, 'index']);
+    Route::post('profile', [App\Http\Controllers\Frontend\UserController::class, 'updateUserDetails']);
     // Route::post('vnpay_payment', [App\Http\Controllers\Frontend\PaymentController::class, 'vnpay_payment']);
 });
 
