@@ -85,7 +85,7 @@
         <p>
             Rất vui khi được đồng hành với bạn trên BookShopping
             <br>
-            Đây là những thứ bạn mua và chi tiết hóa đơn đó
+            Đây là những thứ bạn mua và chi tiết đơn hàng
         </p>
     </div>
     <table class="order-details">

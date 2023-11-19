@@ -56,7 +56,7 @@
                 <div class="col-md-8">
                     <p class=""> &copy; 2023 - Book Shopping. All rights reserved.</p>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 text-white">
                     <div class="social-media">
                         Get Connected:
                         <a href=""><i class="fa fa-facebook"></i></a>

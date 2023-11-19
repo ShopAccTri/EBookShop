@@ -18,7 +18,7 @@ class PlaceOrderMailable extends Mailable
      */
     public function __construct($order)
     {
-        $this->$order = $order;
+        $this->order = $order;
     }
 
     /**
@@ -37,8 +37,7 @@ class PlaceOrderMailable extends Mailable
     public function content(): Content
     {
         return new Content(
-            // view: 'frontend.users.invoice.mail-invoice',
-            view: 'admin.invoice.generate-invoice',
+            view: 'frontend.users.invoice.mail-invoice',
         );
     }
 
