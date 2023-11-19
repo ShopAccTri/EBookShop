@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-8 my-4">
             <div class="card">
                 <div class="card-header">{{ __('Đăng nhập') }}</div>
 
@@ -59,7 +59,7 @@
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Quên mật kh?') }}
+                                        {{ __('Quên mật khẩu?') }}
                                     </a>
                                 @endif
                             </div>
