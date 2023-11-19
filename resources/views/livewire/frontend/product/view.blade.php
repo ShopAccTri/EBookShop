@@ -91,6 +91,68 @@
             </div>
         </div>
     </div>
+
+    <div class="py-3 py-md-5 bg-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                    <h3>Sản phẩm tương tự</h3>
+                    <div class="underline"></div>
+                </div>
+
+                @forelse ($category->relatedProducts as $relatedProductItem)
+                <div class="col-md-3 mb-3">
+                        <div class="product-card">
+                            <div class="product-card-img">
+                                @if ($relatedProductItem->productImages->count() > 0)
+                                    <a
+                                        href="{{ url('/collections/' . $relatedProductItem->category->slug . '/' . $relatedProductItem->slug) }}">
+                                        <img src="{{ asset($relatedProductItem->productImages[0]->image) }}"
+                                            alt="{{ $relatedProductItem->name }}">
+                                    </a>
+                                @endif
+                            </div>
+
+                            <div class="product-card-body">
+                                <p class="product-brand">{{ $relatedProductItem->brand->name }}</p>
+                                <h5 class="product-name">
+                                    <a
+                                        href="{{ url('/collections/' . $relatedProductItem->category->slug . '/' . $relatedProductItem->slug) }}">
+                                        {{ $relatedProductItem->name }}
+                                    </a>
+                                </h5>
+
+                                <div>
+                                    <span
+                                        class="selling-price">{{ number_format($relatedProductItem->selling_price, 0, ',', '.') . ' vn₫' }}</span>
+                                    <span
+                                        class="original-price">{{ number_format($relatedProductItem->original_price, 0, ',', '.') . ' vn₫' }}</span>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                @empty
+                    <div class="col-md-12">
+                        <div class="p-2">
+                            <h4>Không có sản phẩm nào</h4>
+                        </div>
+                    </div>    
+                @endforelse
+            </div>
+        </div>
+    </div>
+
+
+    <div class="py-3 py-md-5 bg-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                    <h3>Bình luận</h3>
+                    <div class="underline"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 @push("scripts")
