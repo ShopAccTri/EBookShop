@@ -25,9 +25,8 @@ Route::get('/featured-products', [App\Http\Controllers\Frontend\FrontendControll
 
 Route::get('/search', [App\Http\Controllers\Frontend\FrontendController::class, 'searchProduct']);
 
-
-
-
+Route::post('/comments', [App\Http\Controllers\Frontend\CommentController::class, 'store']);
+Route::post('/delete-comment', [App\Http\Controllers\Frontend\CommentController::class, 'destroy']);
 
 
 Route::middleware(["auth"])->group(function(){

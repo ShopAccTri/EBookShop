@@ -67,9 +67,9 @@
                             </button>
                         </div>
                         <div class="mt-3">
-                            <h5 class="mb-0">Small Description</h5>
+                            <h5 class="mb-0">Mô tả ngắn</h5>
                             <p>
-                                {{ $product->small_description }}
+                                {!! $product->small_description !!}
                             </p>
                         </div>
                     </div>
@@ -79,11 +79,11 @@
                 <div class="col-md-12 mt-3">
                     <div class="card">
                         <div class="card-header bg-white">
-                            <h4>Description</h4>
+                            <h4>Mô tả sản phẩm</h4>
                         </div>
                         <div class="card-body">
                             <p>
-                                {{ $product->description }}
+                                {!! $product->description !!}
                             </p>
                         </div>
                     </div>
@@ -149,6 +149,49 @@
                 <div class="col-md-12 mb-3">
                     <h3>Bình luận</h3>
                     <div class="underline"></div>
+
+                    <div class="comment-area mt-4">
+
+                        @if(session("message"))
+                            <h6 class="alert alert-warning mb-3">{{ session("message") }}</h6>
+                        @endif
+
+                        <div class="card card-body">
+                            <h6 class="card-title">Bình luận ở đây</h6>
+                            <form action="{{ url("comments") }}" method="post">
+                                @csrf
+                                <input type="hidden" name="product_slug" value="{{ $product->slug }}">
+                                <textarea name="comment_body" class="form-control" rows="3" required></textarea>
+                                <button type="submit" class="btn btn-primary mt-3">Gửi</button>
+                            </form>
+                        </div>
+
+                        @forelse ($product->comments as $comment)
+                            <div class="comment-container card card-body shadow-sm mt-3">
+                                <div class="detail-area">
+                                    <h6 class="user-name mb-1">
+                                        @if ($comment->user)
+                                            {{$comment->user->name }}
+                                        @endif
+                                        <small class="ms-3 text-primary">{{$comment->created_at->format("h:i d-m-Y") }}</small>
+                                    </h6>
+                                    <p class="user-comment mb-1">
+                                        {!! $comment->comment_body !!}
+                                    </p>
+                                </div>
+                                @if(Auth::check() && Auth::id() == $comment->user_id )
+                                    <div>
+                                        <button type="button" value="{{ $comment->id }}" class="deleteComment btn btn-danger btn-sm me-2">Xóa</button>
+                                        {{-- <a class="btn btn-danger btn-sm me-2">Xóa</a> --}}
+                                    </div>
+                                @endif
+                            </div>
+                        @empty
+                            <div class="card card-body shadow-sm mt-3">
+                                <h6>Không có bình luận nào.</h6>
+                            </div>
+                        @endforelse
+                    </div>
                 </div>
             </div>
         </div>
@@ -172,3 +215,39 @@
             });
     </script>
 @endpush
+
+@section("scripts")
+    <script>
+        $(document).ready(function(){
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $(document).on("click",".deleteComment", function(){
+                if(confirm("Bạn có muốn xóa bình luận này không?")){
+                    var thisClicked = $(this);
+                    var comment_id = thisClicked.val();
+                    
+                    $.ajax({
+                        type: "POST",
+                        url: "/delete-comment",
+                        data: {
+                            "comment_id": comment_id
+                        },
+                        success: function (res){
+                            if(res.status == 200){
+                                thisClicked.closest(".comment-container").remove();
+                                alert(res.message);
+                            }else{
+                                alert(res.message);
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+@endsection
