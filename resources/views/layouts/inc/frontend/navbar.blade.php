@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-2 my-auto d-none d-sm-none d-md-block d-lg-block">
-                    <h5 class="brand-name">Book Shopping</h5>
+                    <h5 class="brand-name">{{ $appSetting ->website_name ?? "Website Name"}}</h5>
                 </div>
                 <div class="col-md-5 my-auto">
                     <form action="{{ url("search") }}" method="get" role="search">
@@ -47,6 +47,9 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="{{ url("profile")}}"><i class="fa fa-user"></i> Trang cá nhân</a></li>
+                                    @if(Auth::user()->role_id == "1")
+                                        <li><a class="dropdown-item" href="{{ url("admin/dashboard")}}"><i class="fa fa-user-secret"></i> Trang quản trị</a></li>
+                                    @endif
                                     <li><a class="dropdown-item" href="{{ url("orders")}}"><i class="fa fa-list"></i> Hóa đơn</a></li>
                                     <li><a class="dropdown-item" href="{{ url("wishlist")}}"><i class="fa fa-heart"></i> Yêu thích</a></li>
                                     <li><a class="dropdown-item" href="{{ url("cart")}}"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>

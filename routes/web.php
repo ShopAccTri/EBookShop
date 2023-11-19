@@ -52,6 +52,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
 Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class,"index"])->name("admin.dashboard");
 
+    Route::get('settings', [App\Http\Controllers\Admin\SettingController::class,"index"]);
+    Route::post('settings', [App\Http\Controllers\Admin\SettingController::class,"store"]);
+
     // Route Slider
     Route::controller(App\Http\Controllers\Admin\SliderController::class)->group(function(){
         Route::get("/sliders","index");
