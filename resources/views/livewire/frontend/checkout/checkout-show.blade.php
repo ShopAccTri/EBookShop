@@ -104,9 +104,9 @@
                                                 </div>
                                                 <div class="tab-pane fade" id="onlinePayment" role="tabpanel"
                                                     aria-labelledby="onlinePayment-tab" tabindex="0">
-                                                    <h6>Phương thức thanh toán</h6>
+                                                    <h6>Phương thức thanh toán ( Chức năng đang bảo trì )</h6>
                                                     <hr />
-                                                    <button type="button" wire:click="makePayment"
+                                                    <button type="button" disabled wire:click="makePayment"
                                                         class="btn btn-warning">Mua ngay (VnPay)</button>
                                                 </div>
                                             </div>
