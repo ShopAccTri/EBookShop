@@ -58,6 +58,12 @@
         </div>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="{{ url("admin/comments")}}">
+          <i class="mdi mdi-comment menu-icon"></i>
+          <span class="menu-title">Bình luận</span>
+        </a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="{{ url("admin/sliders")}}">
           <i class="mdi mdi-view-carousel menu-icon"></i>
           <span class="menu-title">Home Slider</span>

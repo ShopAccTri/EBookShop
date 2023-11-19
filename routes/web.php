@@ -108,5 +108,12 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
         Route::put("/users/{user}","update");
         Route::get("/users/{user}/delete","destroy");
     });
+
+    // Route Bình luận
+    Route::controller(App\Http\Controllers\Admin\CommentController::class)->group(function(){
+        Route::get("/comments","index");
+        Route::get("/comments/{comment}/delete","destroy");
+    });
+
 });
 
