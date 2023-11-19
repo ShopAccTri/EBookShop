@@ -24,6 +24,7 @@
                             <a href="{{ url('admin/orders') }}" class="btn btn-danger btn-sm float-end text-white mx-1">Back </a>
                             <a href="{{ url('admin/invoice/'.$order->id.'/generate') }}" class="btn btn-primary btn-sm float-end text-white mx-1">Tải hóa đơn</a>
                             <a href="{{ url('admin/invoice/'.$order->id) }}" target="_blank" class="btn btn-warning btn-sm float-end text-white mx-1">Xem hóa đơn</a>
+                            <a href="{{ url('admin/invoice/'.$order->id.'/mail') }}" class="btn btn-info btn-sm float-end text-white mx-1">Gửi hóa đơn về Email</a>
                         </h4>
                         <hr>
 

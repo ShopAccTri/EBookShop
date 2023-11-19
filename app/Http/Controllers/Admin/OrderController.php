@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
-use App\Http\Controllers\Controller;
 use Barryvdh\DomPDF\Facade\Pdf;
+use App\Mail\InvoiceOrderMailable;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -92,5 +94,18 @@ class OrderController extends Controller
         $pdf = Pdf::loadView('admin.invoice.generate-invoice', $data);
         $todayDate = Carbon::now()->format("d-m-Y");
         return $pdf->download('invoice-'.$order->id.'-'.$todayDate.'.pdf');
+    }
+
+    public function mailInvoice(int $orderId)
+    {
+        try {
+            $order = Order::findOrFail($orderId);
+
+            Mail::to("$order->email")->send(new InvoiceOrderMailable($order));
+            return redirect("admin/orders/".$orderId)->with("message","Đã gửi hóa đơn đến email ".$order->email);
+        } catch (\Throwable $th) {
+
+            return redirect("admin/orders/".$orderId)->with("message","Có lỗi xảy ra!");
+        }
     }
 }
